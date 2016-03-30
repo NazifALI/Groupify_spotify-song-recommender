@@ -1,0 +1,15 @@
+{
+  "display_name" : null,
+  "external_urls" : {
+    "spotify" : "https://open.spotify.com/user/jarheadr176"
+  },
+  "followers" : {
+    "href" : null,
+    "total" : 1
+  },
+  "href" : "https://api.spotify.com/v1/users/jarheadr176",
+  "id" : "jarheadr176",
+  "images" : [ ],
+  "type" : "user",
+  "uri" : "spotify:user:jarheadr176"
+}
