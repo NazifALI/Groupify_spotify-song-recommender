@@ -169,7 +169,6 @@ def calculate_clusters(k,songs):
     centers = {}
     first_iteration = True
     while not clusters_equivalent(old_clusters,new_clusters):
-        print 'Iteration'
         if first_iteration:
             centers = calculate_centers(old_clusters,songs)
             new_clusters = cluster_songs(centers,songs)
@@ -191,16 +190,17 @@ def clusters_to_reccomended_songs(clusters,api_key):
         csl_cluster = ','.join(clusters[cluster])
         recommended_songs[cluster] = get_recommended_songs(csl_cluster,api_key)
 
+
+    #Name the cluster in here
+
     #Need to normalize to str from unicode
     for cluster in recommended_songs:
-        cluster_dict = {}
+        cluster_arr = []
         for track in recommended_songs[cluster]['tracks']:
-            track_dict = {}
-            track_dict['name'] = track['name']
-            track_dict['preview_url'] = track['preview_url']
-            track_dict['uri'] = track['uri']
-            cluster_dict[track['id']] = track_dict
-        recommended_songs[cluster] = cluster_dict
+            cluster_arr.append(track['id'])
+        #Convert list to CSL
+        csl_cluster = ','.join(cluster_arr)
+        recommended_songs[cluster] = csl_cluster
 
     return recommended_songs
 
@@ -215,7 +215,7 @@ def clustering_based_recommendations(api_key):
 
 def main():
 
-    api_key = ""
+    api_key = "BQB8D1Di_aXvfDuRo2MhGuygxURj-ePEl1LzfwXYtAp38mRVFgRFrcjF6igpamGZAB_9gVgo_68FxFvyv31pmF9MbQn2dywdsQuRIdUCsIQfkRbeWHySQR8bEFcGBCEKFcUNl66JGHzZDpBAbJfV6ej-"
 
 
     recommended_songs = clustering_based_recommendations(api_key)
