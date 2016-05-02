@@ -58,11 +58,24 @@ def read_in_top_tracks(api_key):
 #changes the score to a 0-1 range
 def normalize_scores(songs):
     #Read in the features and their ranges
-    f = open("audio_features.txt")
+    #f = open("audio_features.txt")
+    #features_dict = {}
+    #for line in f:
+    #    feature = line.split(',')
+    #    features_dict[feature[0]] = (feature[1],feature[2])
+
     features_dict = {}
-    for line in f:
-        feature = line.split(',')
-        features_dict[feature[0]] = (feature[1],feature[2])
+    features_dict['danceability'] = (0,1)
+    features_dict['energy'] = (0,1)
+    features_dict['key'] = (0,11)
+    features_dict['loudness'] = (-60,0)
+    features_dict['mode'] = (0,1)
+    features_dict['speechiness'] = (0,1)
+    features_dict['acousticness'] = (0,1)
+    features_dict['instrumentalness'] = (0,1)
+    features_dict['liveness'] = (0,1)
+    features_dict['valence'] = (0,1)
+    features_dict['tempo'] = (0,200)
 
     #Normailize the scores
     for song in songs:
@@ -215,7 +228,7 @@ def clustering_based_recommendations(api_key):
 
 def main():
 
-    api_key = "BQB8D1Di_aXvfDuRo2MhGuygxURj-ePEl1LzfwXYtAp38mRVFgRFrcjF6igpamGZAB_9gVgo_68FxFvyv31pmF9MbQn2dywdsQuRIdUCsIQfkRbeWHySQR8bEFcGBCEKFcUNl66JGHzZDpBAbJfV6ej-"
+    api_key = ""
 
 
     recommended_songs = clustering_based_recommendations(api_key)
